@@ -1,0 +1,14 @@
+type,series,model,diagonal,screen type,country,price
+Telephone,S-10,Samsung,none,QLED,none,200
+Telephone,13-Pro,Apple,none,Super Retina XDR OLED,none,1000
+Telephone,9RT 5G,OnePlus,none,AMOLED,none,500
+Telephone,Xenium E109,Philips,none,TFT,none,50
+Telephone,Xenium E109,,none,TFT,none,50
+Telephone,Legion Y90,Lenovo,none,AMOLED,none,700
+Television,RTI-14,none,25,LED,China,1500
+Television,55A7100F,none,55,LCD,Germany,600
+Telephone,Legion Y90,Lenovo,none,AMOLED,none,700,444444444444,jkjkjkjjkjkjj
+Television,UE50AU7100UXUA,none,50,LED,South Korea,500
+Television,Q1E,none,55,QLED,Turkey,400
+
+Television,43GUS6500,none,43,LCD,China,300
