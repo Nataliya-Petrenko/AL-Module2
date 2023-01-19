@@ -1,6 +1,5 @@
 package com.petrenko.model;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 

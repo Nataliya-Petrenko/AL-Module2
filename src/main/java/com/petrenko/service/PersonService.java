@@ -32,12 +32,6 @@ public class PersonService {
         return personRepository.getAll();
     }
 
-//    public void printAll() {
-//        for (Customer c: personRepository.getAll()) {
-//            System.out.println(c);
-//        }
-//    }
-
     private String createEmail() {
         String newEmail = "";
         do {
