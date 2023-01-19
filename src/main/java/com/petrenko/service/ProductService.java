@@ -1,7 +1,7 @@
 package com.petrenko.service;
 
 import com.petrenko.model.Product;
-import com.petrenko.model.ProductDescriptionException;
+import com.petrenko.exceptions.ProductDescriptionException;
 import com.petrenko.model.Telephone;
 import com.petrenko.model.Television;
 import com.petrenko.repository.ProductRepository;
@@ -130,11 +130,15 @@ public class ProductService {
             numberOfProducts = 0;
         }
         Product[] allProduct = productRepository.getAll().toArray(new Product[0]);
-        HashSet<Product> newSet = new HashSet<>();
-        while (newSet.size() < numberOfProducts) {
-            int randomIndex = RandomGenerator.randomNumber(allProduct.length - 1);
-            newSet.add(allProduct[randomIndex]);
+        if (allProduct.length == 0) {
+            throw new NullPointerException("Repository of products is empty. You can't create invoice");
         }
+        HashSet<Product> newSet = new HashSet<>();
+
+            while (newSet.size() < numberOfProducts) {
+                int randomIndex = RandomGenerator.randomNumber(allProduct.length - 1);
+                newSet.add(allProduct[randomIndex]);
+            }
         return newSet;
     }
 }

@@ -1,5 +1,6 @@
 package com.petrenko.service;
 
+import com.petrenko.exceptions.ProductDescriptionException;
 import com.petrenko.model.*;
 import com.petrenko.repository.InvoiceRepository;
 import com.petrenko.repository.PersonRepository;
@@ -29,7 +30,7 @@ public class ShopService {
         this.invoiceRepository = invoiceRepository;
     }
 
-    public static ShopService getInstance() throws FileNotFoundException {
+    public static ShopService getInstance() {
         if (instance == null) {
             instance = new ShopService(PersonRepository.getInstance(),
                     ProductRepository.getInstance(),
@@ -39,11 +40,7 @@ public class ShopService {
         return instance;
     }
 
-    private static void setProductsToRepositoryFromCsvFile(String file) throws FileNotFoundException {
-        if (file == null) {
-            throw new FileNotFoundException("File not exist");
-        }
-
+    private static void setProductsToRepositoryFromCsvFile(String file) {
         try {
             productService.productsToRepositoryFromCsvFile(file);
         } catch (NullPointerException | FileNotFoundException | ProductDescriptionException e) {

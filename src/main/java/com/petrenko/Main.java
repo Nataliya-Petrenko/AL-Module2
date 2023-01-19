@@ -12,15 +12,15 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
         ShopService shopService = ShopService.getInstance();
-        shopService.createAndSaveAndPrintRandomInvoice(15);
-        System.out.println();
+        try {
+            shopService.createAndSaveAndPrintRandomInvoice(15);
+            System.out.println();
 
-        AnalyticOfInvoices analyticOfInvoices = new AnalyticOfInvoices(shopService.allInvoices());
-        analyticOfInvoices.printAllAnalytic();
-
-
-
-
+            AnalyticOfInvoices analyticOfInvoices = new AnalyticOfInvoices(shopService.allInvoices());
+            analyticOfInvoices.printAllAnalytic();
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }

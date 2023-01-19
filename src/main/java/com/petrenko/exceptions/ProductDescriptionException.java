@@ -1,4 +1,4 @@
-package com.petrenko.model;
+package com.petrenko.exceptions;
 
 public class ProductDescriptionException extends IllegalArgumentException{
     public  ProductDescriptionException () {

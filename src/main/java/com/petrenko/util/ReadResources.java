@@ -9,7 +9,7 @@ public class ReadResources {
     public static InputStreamReader input(String file) throws FileNotFoundException {
         InputStream inputStream = inputStream(file);
         if (inputStream == null) {
-            throw new FileNotFoundException("File not exist");
+            throw new FileNotFoundException("File with products description not exist");
         }
         return new InputStreamReader(inputStream);
     }

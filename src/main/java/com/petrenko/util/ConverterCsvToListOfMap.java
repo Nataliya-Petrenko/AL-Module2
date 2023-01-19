@@ -1,6 +1,6 @@
 package com.petrenko.util;
 
-import com.petrenko.model.ProductDescriptionException;
+import com.petrenko.exceptions.ProductDescriptionException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
