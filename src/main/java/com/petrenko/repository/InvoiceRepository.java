@@ -27,8 +27,8 @@ public class InvoiceRepository implements Crud<Invoice> {
     }
 
     @Override
-    public LinkedList<Invoice> getAll() {                        // TODO collection vs array?
-        return new LinkedList<>(INVOICES.values());
+    public HashSet<Invoice> getAll() {
+        return new HashSet<>(INVOICES.values());
     }
 
     @Override

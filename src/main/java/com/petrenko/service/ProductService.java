@@ -16,7 +16,6 @@ import java.util.function.Function;
 
 public class ProductService {
     private final ProductRepository productRepository;
-
     private static ProductService instance;
     private static final String SEPARATOR_FOR_CSV = ",";
 
@@ -117,7 +116,7 @@ public class ProductService {
         return true;
     }
 
-    public LinkedList<Product> allProduct() {
+    public HashSet<Product> allProduct() {
         return productRepository.getAll();
     }
 
@@ -126,7 +125,10 @@ public class ProductService {
                 .forEach(System.out::println);
     }
 
-    public HashSet<Product> createRandomSetProduct(final int numberOfProducts) {
+    public HashSet<Product> createRandomSetProduct(int numberOfProducts) {
+        if (numberOfProducts < 0) {
+            numberOfProducts = 0;
+        }
         Product[] allProduct = productRepository.getAll().toArray(new Product[0]);
         HashSet<Product> newSet = new HashSet<>();
         while (newSet.size() < numberOfProducts) {

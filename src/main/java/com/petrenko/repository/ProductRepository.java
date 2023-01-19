@@ -2,10 +2,7 @@ package com.petrenko.repository;
 
 import com.petrenko.model.Product;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class ProductRepository implements Crud<Product> {
     private static ProductRepository instance;
@@ -37,8 +34,8 @@ public class ProductRepository implements Crud<Product> {
     }
 
     @Override
-    public LinkedList<Product> getAll() {
-        return new LinkedList<>(PRODUCTS.values());
+    public HashSet<Product> getAll() {
+        return new HashSet<>(PRODUCTS.values());
     }
 
     @Override

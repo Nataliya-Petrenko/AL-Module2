@@ -16,8 +16,7 @@ public class ReadResources {
 
     private static InputStream inputStream(String file) {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        InputStream inputStream = loader.getResourceAsStream(file);
-        return inputStream;
+        return loader.getResourceAsStream(file);
     }
 
 }

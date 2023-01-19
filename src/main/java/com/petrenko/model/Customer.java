@@ -10,8 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Customer {
-    @Setter(AccessLevel.NONE)
-    private String id;
+    private final String id;
     private String email;
     private int age;
 
@@ -35,11 +34,11 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return id.equals(customer.id);
+        return age == customer.age && Objects.equals(id, customer.id) && Objects.equals(email, customer.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, email, age);
     }
 }

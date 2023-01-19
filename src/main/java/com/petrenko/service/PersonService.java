@@ -3,8 +3,9 @@ package com.petrenko.service;
 import com.petrenko.model.Customer;
 import com.petrenko.repository.PersonRepository;
 import com.petrenko.util.RandomGenerator;
+import lombok.NonNull;
 
-import java.util.Arrays;
+import java.util.HashSet;
 
 public class PersonService {
     private static PersonService instance;
@@ -27,11 +28,15 @@ public class PersonService {
         return customer;
     }
 
-    public void printAll() {
-        for (Customer c: personRepository.getAll()) {
-            System.out.println(c);
-        }
+    public HashSet<Customer> allCustomer() {
+        return personRepository.getAll();
     }
+
+//    public void printAll() {
+//        for (Customer c: personRepository.getAll()) {
+//            System.out.println(c);
+//        }
+//    }
 
     private String createEmail() {
         String newEmail = "";
@@ -41,7 +46,7 @@ public class PersonService {
         return newEmail;
     }
 
-    private boolean checkEmailAlreadyExist(final String email) {
+    private boolean checkEmailAlreadyExist(@NonNull final String email) {
         return personRepository.getAll().stream()
                 .anyMatch(customer -> customer.getEmail().equals(email));
     }

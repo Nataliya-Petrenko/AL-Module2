@@ -18,17 +18,28 @@ public class Invoice {
     private TypeInvoice type;
     private LocalDateTime invoiceTime;
 
-    public Invoice(HashSet<Product> products, Customer customer, TypeInvoice type) {
+    public Invoice(HashSet<Product> products, Customer customer) {
         this.id = UUID.randomUUID().toString();
         this.products = products;
         this.customer = customer;
-        this.type = type;
+        this.type = typeInvoiceBySummaPrices(products);
         this.invoiceTime = LocalDateTime.now();
+    }
+
+    private TypeInvoice typeInvoiceBySummaPrices(final HashSet<Product> setProducts) {
+        int summaPrices = summaPricesFromHashSetProduct(setProducts);
+        return summaPrices <= Invoice.LIMIT ? TypeInvoice.RETAIL : TypeInvoice.WHOLESALE;
+    }
+
+    private int summaPricesFromHashSetProduct(final HashSet<Product> setProducts) {
+        return setProducts.stream()
+                .map(Product::getPrice)
+                .reduce(0, Integer::sum);
     }
 
     @Override
     public String toString() {
-        return "[" + invoiceTime + "] [" + customer + "] [" + products + "]"; //[time] [user-data] [invoice-data]
+        return "[" + invoiceTime + "] [" + customer + "] [" + products + "]";
     }
 
     @Override
