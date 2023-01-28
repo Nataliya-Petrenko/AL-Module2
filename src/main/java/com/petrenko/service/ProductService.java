@@ -75,48 +75,48 @@ public class ProductService {
     }
 
     private void setFieldsOfProduct(Map<String, String> map, Telephone telephone) {
-        if (checkFieldExist(map, "series")) {
+//        if (checkFieldExist(map, "series")) {
             telephone.setSeries(map.get("series"));
-        }
-        if (checkFieldExist(map, "model")) {
+//        }
+//        if (checkFieldExist(map, "model")) {
             telephone.setModel(map.get("model"));
-        }
-        if (checkFieldExist(map, "screen type")) {
+//        }
+//        if (checkFieldExist(map, "screen type")) {
             telephone.setScreenType(map.get("screen type"));
-        }
-        if (checkFieldExist(map, "price")) {
+//        }
+//        if (checkFieldExist(map, "price")) {
             telephone.setPrice(Integer.parseInt(map.get("price")));
-        }
+//        }
     }
 
     private void setFieldsOfProduct(Map<String, String> map, Television television) {
-        if (checkFieldExist(map, "series")) {
+//        if (checkFieldExist(map, "series")) {
             television.setSeries(map.get("series"));
-        }
-        if (checkFieldExist(map, "diagonal")) {
+//        }
+//        if (checkFieldExist(map, "diagonal")) {
             television.setDiagonal(Integer.parseInt(map.get("diagonal")));
-        }
-        if (checkFieldExist(map, "screen type")) {
+//        }
+//        if (checkFieldExist(map, "screen type")) {
             television.setScreenType(map.get("screen type"));
-        }
-        if (checkFieldExist(map, "country")) {
+//        }
+//        if (checkFieldExist(map, "country")) {
             television.setCountry(map.get("country"));
-        }
-        if (checkFieldExist(map, "price")) {
+//        }
+//        if (checkFieldExist(map, "price")) {
             television.setPrice(Integer.parseInt(map.get("price")));
-        }
+//        }
     }
 
-    private boolean checkFieldExist(final Map<String, String> map, final String field) {
-        if (map.get(field).equals("") || map.get(field).equals("none") || field == null) {
-            throw new ProductDescriptionException("One or several description fields of product " +
-                    "in resources-file not exist. " +
-                    "This map will not convert to product: " + map);
-        }
-        return true;
-    }
+//    private boolean checkFieldExist(final Map<String, String> map, final String field) {
+//        if (map.get(field).equals("") || map.get(field).equals("none") || field == null) {
+//            throw new ProductDescriptionException("One or several description fields of product " +
+//                    "in resources-file not exist. " +
+//                    "This map will not convert to product: " + map);
+//        }
+//        return true;
+//    }
 
-    public HashSet<Product> allProduct() {
+    public Set<Product> allProduct() {
         return productRepository.getAll();
     }
 
@@ -125,7 +125,7 @@ public class ProductService {
                 .forEach(System.out::println);
     }
 
-    public HashSet<Product> createRandomSetProduct(int numberOfProducts) {
+    public Set<Product> createRandomSetProduct(int numberOfProducts) {
         if (numberOfProducts < 0) {
             numberOfProducts = 0;
         }

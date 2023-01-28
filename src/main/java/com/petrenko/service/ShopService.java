@@ -48,7 +48,7 @@ public class ShopService {
         }
     }
 
-    public HashSet<Invoice> createAndSaveAndPrintRandomInvoice(int numberOfInvoices) {
+    public Set<Invoice> createAndSaveAndPrintRandomInvoice(int numberOfInvoices) {
         HashSet<Invoice> invoices = new HashSet<>();
         while (invoices.size() < numberOfInvoices) {
             invoices.add(createAndSaveAndPrintRandomInvoice());
@@ -58,7 +58,7 @@ public class ShopService {
 
     public Invoice createAndSaveAndPrintRandomInvoice() {
         final int numberOfProducts = RandomGenerator.randomNumber(MAX_PRODUCTS_IN_ONE_RANDOM_INVOICE) + 1;
-        HashSet<Product> setProducts = productService.createRandomSetProduct(numberOfProducts);
+        Set<Product> setProducts = productService.createRandomSetProduct(numberOfProducts);
         Customer customer = personService.createAndSaveCustomerByRandom();
 
         Invoice invoice = invoiceService.createInvoice(setProducts, customer);
@@ -69,18 +69,8 @@ public class ShopService {
         return invoice;
     }
 
-    public HashSet<Customer> allCustomer() {
-        return personService.allCustomer();
-    }
-    public HashSet<Product> allProduct() {
-        return productService.allProduct();
-    }
-    public HashSet<Invoice> allInvoices() {
+    public Set<Invoice> allInvoices() {
         return invoiceService.allInvoices();
-    }
-
-    public void printAllProduct() {
-        productService.printAllProduct();
     }
 
 }

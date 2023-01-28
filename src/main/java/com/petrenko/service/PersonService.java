@@ -6,6 +6,7 @@ import com.petrenko.util.RandomGenerator;
 import lombok.NonNull;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class PersonService {
     private static PersonService instance;
@@ -28,7 +29,7 @@ public class PersonService {
         return customer;
     }
 
-    public HashSet<Customer> allCustomer() {
+    public Set<Customer> allCustomer() {
         return personRepository.getAll();
     }
 

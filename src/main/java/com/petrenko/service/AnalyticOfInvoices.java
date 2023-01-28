@@ -10,9 +10,9 @@ import java.util.function.Predicate;
 import static java.util.stream.Collectors.toCollection;
 
 public class AnalyticOfInvoices {
-    private final HashSet<Invoice> invoiceSet;
+    private final Set<Invoice> invoiceSet;
 
-    public AnalyticOfInvoices(HashSet<Invoice> invoiceSet) {
+    public AnalyticOfInvoices(Set<Invoice> invoiceSet) {
         this.invoiceSet = invoiceSet;
     }
 
@@ -53,7 +53,7 @@ public class AnalyticOfInvoices {
                 .count();
     }
 
-    public HashSet<Invoice> invoicesWithTheSameProductType() {
+    public Set<Invoice> invoicesWithTheSameProductType() {
 
         Function<Invoice, TypeProduct> typeOfFirstProduct = invoice -> invoice.getProducts().stream()
                 .findFirst()
@@ -76,7 +76,7 @@ public class AnalyticOfInvoices {
                 .collect(toCollection(LinkedList::new));
     }
 
-    public HashSet<Invoice> invoicesOfCustomersLowAge() {
+    public Set<Invoice> invoicesOfCustomersLowAge() {
         return invoiceSet.stream()
                 .filter(i -> i.getCustomer().getAge() < 18)
                 .peek(i -> i.setType(TypeInvoice.LOW_AGE))

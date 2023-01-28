@@ -17,26 +17,26 @@ class AnalyticOfInvoicesTest {
     void setUp() throws InterruptedException {
         Product[] product = new Product[10];
 
-        HashSet<Product> setOfProducts1 = new HashSet<>();
+        Set<Product> setOfProducts1 = new HashSet<>();
         for (int i = 0; i < 5; i++) {
             product[i] = new Telephone("s" + i, "m" + i, "st" + i, i * 100);
             setOfProducts1.add(product[i]);
         }
 
-        HashSet<Product> setOfProducts2 = new HashSet<>();
+        Set<Product> setOfProducts2 = new HashSet<>();
         for (int i = 5; i < 8; i++) {
             product[i] = new Television("s" + i, i * 10, "st" + i, "c" + i, i * 1000);
             setOfProducts2.add(product[i]);
         }
 
-        HashSet<Product> setOfProducts3 = new HashSet<>(); // sumPrices = (0+3)*100 + (5+7)*1000 = 12300
+        Set<Product> setOfProducts3 = new HashSet<>(); // sumPrices = (0+3)*100 + (5+7)*1000 = 12300
         setOfProducts3.add(product[0]);
         setOfProducts3.add(product[3]);
         setOfProducts3.add(product[5]);
         setOfProducts3.add(product[7]);
 
 
-        HashSet<Product> setOfProducts4 = new HashSet<>(); // sumPrices = (1+4)*100 + 6*1000 = 6400
+        Set<Product> setOfProducts4 = new HashSet<>(); // sumPrices = (1+4)*100 + 6*1000 = 6400
         setOfProducts4.add(product[1]);
         setOfProducts4.add(product[4]);
         setOfProducts4.add(product[6]);
@@ -100,10 +100,10 @@ class AnalyticOfInvoicesTest {
 
     @Test
     public void invoicesWithTheSameProductType_Test() {
-        final HashSet<Invoice> expected = new HashSet<>();
+        final Set<Invoice> expected = new HashSet<>();
         expected.add(invoice[0]);
         expected.add(invoice[1]);
-        final HashSet<Invoice> actual = target.invoicesWithTheSameProductType();
+        final Set<Invoice> actual = target.invoicesWithTheSameProductType();
         Assertions.assertEquals(expected, actual);
     }
 
@@ -119,19 +119,19 @@ class AnalyticOfInvoicesTest {
 
     @Test
     public void invoicesOfCustomersLowAge_Test_CheckCustomers() {
-        final HashSet<Invoice> expected = new HashSet<>();
+        final Set<Invoice> expected = new HashSet<>();
         expected.add(invoice[0]);
-        final HashSet<Invoice> actual = target.invoicesOfCustomersLowAge();
+        final Set<Invoice> actual = target.invoicesOfCustomersLowAge();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void invoicesOfCustomersLowAge_Test_CheckChangedType() {
-        final HashSet<Invoice> expectedSet = new HashSet<>();
+        final Set<Invoice> expectedSet = new HashSet<>();
         expectedSet.add(invoice[0]);
         final Optional<TypeInvoice> expected = Optional.of(TypeInvoice.LOW_AGE);
 
-        final HashSet<Invoice> actualSet = target.invoicesOfCustomersLowAge();
+        final Set<Invoice> actualSet = target.invoicesOfCustomersLowAge();
         final Optional<TypeInvoice> actual = actualSet.stream()
                 .map(Invoice::getType)
                 .findAny();

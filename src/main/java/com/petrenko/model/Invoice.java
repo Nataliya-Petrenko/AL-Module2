@@ -6,6 +6,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Setter
@@ -13,12 +14,12 @@ import java.util.UUID;
 public class Invoice {
     public static final int LIMIT = 10_000;
     private final String id;
-    private HashSet<Product> products;
+    private Set<Product> products;
     private Customer customer;
     private TypeInvoice type;
     private LocalDateTime invoiceTime;
 
-    public Invoice(HashSet<Product> products, Customer customer) {
+    public Invoice(Set<Product> products, Customer customer) {
         this.id = UUID.randomUUID().toString();
         this.products = products;
         this.customer = customer;
@@ -26,12 +27,12 @@ public class Invoice {
         this.invoiceTime = LocalDateTime.now();
     }
 
-    private TypeInvoice typeInvoiceBySummaPrices(final HashSet<Product> setProducts) {
+    private TypeInvoice typeInvoiceBySummaPrices(final Set<Product> setProducts) {
         int summaPrices = summaPricesFromHashSetProduct(setProducts);
         return summaPrices <= Invoice.LIMIT ? TypeInvoice.RETAIL : TypeInvoice.WHOLESALE;
     }
 
-    private int summaPricesFromHashSetProduct(final HashSet<Product> setProducts) {
+    private int summaPricesFromHashSetProduct(final Set<Product> setProducts) {
         return setProducts.stream()
                 .map(Product::getPrice)
                 .reduce(0, Integer::sum);

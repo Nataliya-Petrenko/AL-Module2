@@ -27,17 +27,8 @@ public class PersonRepository implements Crud<Customer> {
     }
 
     @Override
-    public HashSet<Customer> getAll() {
+    public Set<Customer> getAll() {
         return new HashSet<>(CUSTOMERS.values());
     }
 
-    @Override
-    public Optional<Customer> getById(String id) {
-        return Optional.ofNullable(CUSTOMERS.get(id));
-    }
-
-    @Override
-    public void deleteById(String id) {
-        CUSTOMERS.remove(id);
-    }
 }

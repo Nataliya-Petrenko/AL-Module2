@@ -6,7 +6,7 @@ import com.petrenko.model.Product;
 import com.petrenko.repository.InvoiceRepository;
 import lombok.NonNull;
 
-import java.util.HashSet;
+import java.util.Set;
 
 public class InvoiceService {
     private static InvoiceService instance;
@@ -23,7 +23,7 @@ public class InvoiceService {
         return instance;
     }
 
-    public Invoice createInvoice(@NonNull final HashSet<Product> setProducts, @NonNull final Customer customer) {
+    public Invoice createInvoice(@NonNull final Set<Product> setProducts, @NonNull final Customer customer) {
         return new Invoice(setProducts, customer);
     }
 
@@ -37,7 +37,7 @@ public class InvoiceService {
         }
     }
 
-    public HashSet<Invoice> allInvoices() {
+    public Set<Invoice> allInvoices() {
         return invoiceRepository.getAll();
     }
 }

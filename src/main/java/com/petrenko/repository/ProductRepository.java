@@ -34,17 +34,8 @@ public class ProductRepository implements Crud<Product> {
     }
 
     @Override
-    public HashSet<Product> getAll() {
+    public Set<Product> getAll() {
         return new HashSet<>(PRODUCTS.values());
     }
 
-    @Override
-    public Optional<Product> getById(String id) {
-        return Optional.ofNullable(PRODUCTS.get(id));
-    }
-
-    @Override
-    public void deleteById(String id) {
-        PRODUCTS.remove(id);
-    }
 }

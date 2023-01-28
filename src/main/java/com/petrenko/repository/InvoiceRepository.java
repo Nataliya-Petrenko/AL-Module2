@@ -27,17 +27,8 @@ public class InvoiceRepository implements Crud<Invoice> {
     }
 
     @Override
-    public HashSet<Invoice> getAll() {
+    public Set<Invoice> getAll() {
         return new HashSet<>(INVOICES.values());
     }
 
-    @Override
-    public Optional<Invoice> getById(String id) {
-        return Optional.ofNullable(INVOICES.get(id));
-    }
-
-    @Override
-    public void deleteById(String id) {
-        INVOICES.remove(id);
-    }
 }

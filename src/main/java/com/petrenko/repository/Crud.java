@@ -1,11 +1,8 @@
 package com.petrenko.repository;
 
-import java.util.HashSet;
-import java.util.Optional;
+import java.util.Set;
 
 public interface Crud<T> {
     void save(final T value);
-    HashSet<T> getAll();
-    Optional<T> getById(final String id);
-    void deleteById(final String id);
+    Set<T> getAll();
 }
