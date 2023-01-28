@@ -40,7 +40,13 @@ public class Invoice {
 
     @Override
     public String toString() {
-        return "[" + invoiceTime + "] [" + customer + "] [" + products + "]";
+        int year = invoiceTime.getYear();
+        int month = invoiceTime.getMonthValue();
+        int day = invoiceTime.getDayOfMonth();
+        int hour = invoiceTime.getHour();
+        int minute = invoiceTime.getMinute();
+        String time = String.format("%d.%d.%d %d:%d", year, month, day, hour, minute);
+        return "[" + time + "] [" + customer + "] [" + products + "]";
     }
 
     @Override
