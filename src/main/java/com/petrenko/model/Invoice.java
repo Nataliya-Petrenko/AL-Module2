@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -40,13 +41,8 @@ public class Invoice {
 
     @Override
     public String toString() {
-        int year = invoiceTime.getYear();
-        int month = invoiceTime.getMonthValue();
-        int day = invoiceTime.getDayOfMonth();
-        int hour = invoiceTime.getHour();
-        int minute = invoiceTime.getMinute();
-        String time = String.format("%d.%d.%d %d:%d", year, month, day, hour, minute);
-        return "[" + time + "] [" + customer + "] [" + products + "]";
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("yyyy MM dd HH:mm");
+        return "[" + time.format(invoiceTime) + "] [" + customer + "] [" + products + "]";
     }
 
     @Override
